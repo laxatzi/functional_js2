@@ -32,19 +32,3 @@ function capWords(input){
   --Brittle code that won't work outside specific context
 */
 
-// OBJECT ORIENTED JS
-/* 
-  --Data treated as objects to be passed around
-  --Use defined methods to manipulate objects
-  --Passing messages
-  --Hiding and sharing properties
-  --Composition
-  --Inheritance
-*/
-(function(){
-   'use strict';
-  var SomeText =  function(text){ // this is going to be our object thus the capitalization
-    this.text = text; // we creating a local copy of the text that is being passed in as arg.
-    
-}; // end of object
-}());//end wrapper iife
