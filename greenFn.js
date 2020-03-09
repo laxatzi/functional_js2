@@ -46,3 +46,14 @@
   }
   document.getElementById("main_button").addEventListener("click", getValue);
 }());//end wrapper iife
+
+// examining the refactored code
+/* 
+  --Code is extremely concise
+  --No mutable variables
+  --Implied return values
+  --Immediately invoked blocks syntax
+  --Still 'use strict' (unless its a module)
+
+  
+*/
