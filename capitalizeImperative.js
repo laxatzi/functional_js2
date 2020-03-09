@@ -26,9 +26,9 @@ function capWords(input){
   --Variables defined in the global scope, outside function
   --Interdependent functions for capWords() and getText()
   --Values being passed around and redefined
-  --Native Javascript and Dom methods mixed together
+  --Native Javascript and Dom methods mixed together (onclick method)
   --Unclear what is happening outside the script
-  --Function names being repeated in other scripts
+  --Function names being repeated in other scripts (name pollution)
   --Brittle code that won't work outside specific context
 */
 
