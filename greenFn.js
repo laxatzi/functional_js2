@@ -108,5 +108,8 @@
 
 // Advantages of using pure functions
 /* 
-
+  --Results are easy to reproduce and test-you always get the same results every time you pass the same values.
+  --Can be called in parallel without altering results
+  --Allow memoization- a concept in which you can actually store the value that is going to be returned for any given input in a function.
+  
 */
