@@ -24,5 +24,25 @@
       alert(capifyMoreWords(capify, feedback));
    }
 
-   document.getElementById("button").addEventListener("click", getValue);
+ // document.getElementById("button").addEventListener("click", getValue);
+}());//end wrapper iife
+
+// advantages of functional coding
+/* 
+  --Code is more concise
+  --Functions defined here are independent and reusable
+  --Not reliance on an abstract object being passed around
+  --Much easier to unit test
+  --Avoid loops with map method
+*/
+
+(function(){
+'use strict';
+  const capify = str => [str.charAt(0).toUpperCase(), str.substring(1)].join("");
+  const capifyMoreWords = (fn, str)=> str.split(" ").map(fn).join(" ");
+  const getValue = ()=> {
+     let feedback = prompt("Give me feedback! Which style of programming do you prefer?");
+     alert(capifyMoreWords(capify, feedback));
+  }
+  document.getElementById("main_button").addEventListener("click", getValue);
 }());//end wrapper iife
