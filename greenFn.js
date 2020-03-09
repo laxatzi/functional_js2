@@ -54,6 +54,59 @@
   --Implied return values
   --Immediately invoked blocks syntax
   --Still 'use strict' (unless its a module)
+*/
 
+// PURE FUNCTIONS
+/* 
+  Pure functions characteristics:
+
+  --Don't rely on the state of the code they are called from
+  --Don't create side effects that alter variables outside themselves
+  --Only one result for any given set of args
+   
+*/
+
+// Lets check an impure function
+/* 
+  An impure function can rely on global or externally defined values
+*/
+// Example:
+(function(){
+'use strict';
+   const external = [1,2,3];
+
+   const impure = (value)=> {
+      let result = value + external.length;  // we don't know what this external value is going to be every single time we call the function
+      external.push(result); // mind that we CAN push values onto an array or an object in a const variable
+      return result;
+   }
+
+   console.log(impure(4)); // 7
+   console.log(impure(4)); // 8 // and impure function can affect values outside of itself (external length is changed here) AND an impure function may not always return the same result with the same input. This is a disadvantage when testing code.
+}());//end wrapper iife
+
+// What to be careful with in pure functions
+/* 
   
+*/
+
+(function(){
+'use strict';
+  const external = [1,3,5];
+  const pure = (value, arr)=> {
+     let result = value + arr.length;
+     return result;
+  }
+
+  console.log(pure(4, external)); // 7
+  console.log(pure(4, external)); // 7 // function is pure since it returns same result
+  // make a push 
+  external.push(4);
+  console.log(pure(4,external)); // 8 // Mutable values can change result, even with a pure function
+}());//end wrapper iife
+
+
+// Advantages of using pure functions
+/* 
+
 */
