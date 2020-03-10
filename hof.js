@@ -33,7 +33,6 @@
   console.log(snakify("The millennials are always up to something"));
 
  //  Now lets create another similar function:
-
   const hippify = (text)=> text.replace(/baby boomers/ig, "aging hippies");
 
   console.log(hippify("The baby boomers just look the other way."));
@@ -59,3 +58,14 @@
 
 }());//end wrapper iife
 
+//REFACTORING the above code in ECMA2015
+(function(){
+  'use strict';
+
+  const attitude =  (original, replacement)=> (source)=> source.replace(original, replacement);
+  const snakify = attitude(/millennials/ig, "Just snake people");
+  const hippify = attitude(/baby boomers/ig, "Just aging hippies");
+
+  console.log(snakify("The millennials are always up to something"));
+  console.log(hippify("The baby boomers just look the other way"));
+}());//end wrapper iife
