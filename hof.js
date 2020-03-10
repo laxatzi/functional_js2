@@ -15,9 +15,8 @@
 
 (function(){
   'use strict';
-  const timer = setInterval(
-    ()=> console.log(new Date().toLocaleTimeString()),
-     1000
-  );
+  const logTime = ()=> console.log(new Date().toLocaleTimeString());
+  const timer = setInterval(logTime,1000);
+  
   console.log(setTimeout(()=>clearInterval(timer), 3000));
 }());//end wrapper iife
