@@ -1,5 +1,5 @@
 /* 
-  The definition of Recursion is, repeatedly calling a function from within itself, and then iterating until a completion rate is reached.
+  The definition of Recursion is, repeatedly calling a function from within itself, and then iterating until a completion condition is reached.
   Ideally, you returned to result without affecting anything outside the function.
   The classic factorial is a typical example of using recursions as a solution.
   A factorial operation is multiply an integer with the previous integer. Then you multiply the product with the next previous integer and keep on going backwards until you reach 1. 
@@ -91,3 +91,6 @@
  
       console.log(factorialPTC(6)); // 720
 }());//end wrapper iife
+
+// What we have done is: refactor our factorial and we have put our call to factorIt in the tail position. So that our recursive function implements a proper tail call and can be optimized if the JavaScript engine supports tail call optimization.
+
