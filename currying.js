@@ -53,3 +53,16 @@ console.log(greetHowdy("Makis")); // Howdy Makis
 console.log(greetCurried()); // Greetings!
 
 }());//end wrapper iife
+
+// Doing deep currying for a variadic* function
+/* 
+    *In computer science, an operator or function is variadic if it can take a varying number of arguments; that is, if its arity is not fixed.
+
+   What if we'd like to customize every single element of our function?
+   Technically, in functional programming, the definition of currying limits us to working with one argument at a time. 
+   Partial application.
+   Unlike currying which produces a series of chained functions, each one taking a single argument, with partial application we take a function and apply it to some of its arguments but not all of them, producing a new function in the process. 
+   Using a currying function for partial application allows us to just pass in the function that we want this applied to. And we can approach it the same way we use currying.
+
+   Example of applying the currying technic to variadic functions:
+*/
