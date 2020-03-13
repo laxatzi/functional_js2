@@ -64,5 +64,23 @@ console.log(greetCurried()); // Greetings!
    Unlike currying which produces a series of chained functions, each one taking a single argument, with partial application we take a function and apply it to some of its arguments but not all of them, producing a new function in the process. 
    Using a currying function for partial application allows us to just pass in the function that we want this applied to. And we can approach it the same way we use currying.
 
-   Example of applying the currying technic to variadic functions:
+   Example of applying the currying technique to variadic functions:
+
 */
+(function(){
+  'use strict';
+  const deeplyCurriedGreet = (greeting)=>(separator)=>(emphasis)=>(name)=>greeting + separator + name + emphasis;
+
+  const greetAwkwardly = deeplyCurriedGreet("Hello")("...")("?");
+  console.log(greetAwkwardly("Maria")); // Hello...Maria
+  console.log(greetAwkwardly("John")); //  Hello...John
+
+// As you noticed again in this case the name was passed as the final function. The reason for this is that we have decided that the name is the thing that is most likely to change. 
+// We can pass fewer arguments when we are creating our variations on the curried function. Any args that we don't pass when we are defining our functions can be passed when we call this functions.
+
+  const sayHello = deeplyCurriedGreet("Hello")(", ");
+  console.log(sayHello(".")("Polyxeni")); //"Hello, Polyxeni."
+  const askHello = sayHello("?");
+  console.log(askHello("Paul")); // "Hello, Paul?"
+
+  }());//end wrapper iife
