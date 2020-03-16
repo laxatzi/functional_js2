@@ -84,3 +84,12 @@ console.log(greetCurried()); // Greetings!
   console.log(askHello("Paul")); // "Hello, Paul?"
 
   }());//end wrapper iife
+
+  // Conclusion 
+  /* 
+    --Currying takes advantage of how javascript functions can take and return functions as values
+    --Currying a function allows you to create sets of related functions
+    --A particular concern when currying a function is the order of the arguments
+    --Unlike purely functional languages, JavaScript always supports functions that can take ANY number of arguments
+    --Partial application allows you to create sets of related  functions that may fill in multiple arguments
+  */
