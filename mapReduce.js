@@ -1,11 +1,17 @@
 // Let's remember how a traditional loop is created
-const animals = ['cat', 'dog', 'horse'];
-let lengths = [];
-for(let j = 0; j<animals.length; j++){
-   lengths.push(animals[j].length);
-}
+(function(){
+  'use strict';
+  const animals = ['cat', 'dog', 'horse'];
+  let lengths = [];
+  for(let j = 0; j<animals.length; j++){
+     lengths.push(animals[j].length);
+  }
+  
+  console.log(lengths); // [3, 3, 5]
 
-console.log(lengths);
+
+}());//end wrapper iife
+
 
 // the above code is easy to understand
 /* 
@@ -23,3 +29,31 @@ console.log(lengths);
   We can clean up our code to make things less messy and more state free.
   
 */
+
+//Introduce the map method
+  // Mapping lets you create a new array by modifying the values in an existing array. It returns another array that has exactly the same number of elements but they have all (the elements) been modified according to a function that you pass in.
+// It leaves the original array unmuted.
+//Solving the previous problem with map
+
+(function(){
+  'use strict';
+  
+  const animals = ['cat', 'dog', 'horse'];
+  let animalLetterCount = animals.map((animal)=>animal.length);
+
+  console.log(animalLetterCount); //[3, 3, 5]
+
+}());//end wrapper iife
+
+// the above map example can be written with even cleaner code bellow 
+
+(function(){
+  'use strict';
+
+  const animals = ['cat', 'dog', 'horse'];
+  const getLength = (item)=> item.length;
+  let animalLetterCount = animals.map(getLength);
+
+  console.log(animalLetterCount); // [3, 3, 5]
+  
+}());//end wrapper iife
