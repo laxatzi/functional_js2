@@ -123,5 +123,24 @@
   BUT if one or more of the values is/are string(s), the operator is going to treat the result as if it was a string. 
   So in this case because we did not set an accumulator in the first place, our accumulator assumed that the first value in the array should be the value set for the sum.
   And because the first value was a string, it assumed that the plus operator should be used to add together string values, and return a sting. So the cat was assigned as the first value, then the length of dog was added and then the length of fish was added, giving us cat34. 
+*/
 
+// Refactoring code
+
+(function(){
+  'use strict';
+
+   const animals = ['cat', 'dog', 'horse'];
+   const addLength = ((sum, el)=> sum + el.length);
+   let letterCount = animals.reduce(addLength, 0);
+   
+   console.log(letterCount); // 11
+
+}());//end wrapper iife
+
+/* 
+  Here we are just defining our function and we are calling it addLength. 
+  It is pure, does not relying on anything in the state of the application and it 
+  always returns the same item that is being passed in. 
+  We are passing that fn into the reduce, and setting our init accum value coz that helps us control the return type.
 */
