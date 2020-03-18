@@ -144,3 +144,15 @@
   always returns the same item that is being passed in. 
   We are passing that fn into the reduce, and setting our init accum value coz that helps us control the return type.
 */
+
+
+
+// The End
+// Conclusion
+/* 
+   -- Mapping, Reducing, and Filtering does NOT alter the original Array
+   -- Mapping, Reducing, and Filtering methods are available in ES5 compliant javascript engines and later
+   -- Mapping an array always returns a new Array of the same length
+   -- The accumulator parameter of the reduce method optionally sets an initial value.
+   -- When filtering an Array we get a new Array of the same length or shorter.
+*/
