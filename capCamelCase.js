@@ -21,3 +21,18 @@
   console.log(threeLetterAnimals); // CatDog
 
 }());//end wrapper iife
+
+//Refactor using functional methods
+
+(function(){
+  'use strict';
+
+  const animals = ['cat', 'dog', 'horse'];
+  const threeLetterWords = word=> word.length === 3;
+  const capitalize = word=> word.charAt(0).toUpperCase()+word.slice(1);
+  const mergeWords = (words , word)=> words + word;   
+
+  let threeLetterAnimals = animals.filter(threeLetterWords).map(capitalize).reduce(mergeWords);
+  console.log(threeLetterAnimals);// "CatDog";
+
+}());//end wrapper iife
