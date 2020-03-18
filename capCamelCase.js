@@ -36,3 +36,5 @@
   console.log(threeLetterAnimals);// "CatDog";
 
 }());//end wrapper iife
+
+// This functional methods are versatile enough, the chaining can be formatted the way that you like, you can use intermediate methods, you can use intermediate functions whatever you prefer. This methods can make your code cleaner and more maintainable.  
