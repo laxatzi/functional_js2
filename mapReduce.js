@@ -145,8 +145,6 @@
   We are passing that fn into the reduce, and setting our init accum value coz that helps us control the return type.
 */
 
-
-
 // The End
 // Conclusion
 /* 
