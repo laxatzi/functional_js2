@@ -60,6 +60,7 @@
 
 }());//end wrapper iife
 
+
 // Manual Composition
 // Using composition to make nesting cleaner
 
@@ -68,7 +69,31 @@
 
     const addOne = x=> x+1;
     const timesTwo = x=> x*2;
-    const addOneTimesTwo = x=> timesTwo(addOne(num));
-    console.log(addOneTimesTwo(3)); // 
-
+    const addOneTimesTwo = x=> timesTwo(addOne(x));
+    console.log(addOneTimesTwo(3)); // 8
+    //Or
+    const timesTwoAddOne = x=> addOne(timesTwo(x)); 
+    console.log(timesTwoAddOne(3)); // 7
 }());//end wrapper iife
+
+/* 
+  With manual composition we can create as many variations as we like. BUT, we are trading complexity for configuration. 
+  What we really want is a compose function, which is not currently native to javascript and can take two functions and then nest them producing a new one.
+  That new function would be the result of applying the compose function, and then passing in the first function and the second function.
+  And a compose function, and then passing in the first function and the second function. And then the tricky part is the order in which the operations would be performed. 
+  Because of course, as we know it, the order is very critical when nesting functions.
+
+*/
+
+// Create compose function
+
+(function(){
+  'use strict'
+
+  const compose = (f1,f2)=> {
+     return val=>{
+        return f1(f2(val));
+     }
+  }
+  
+;}());//end wrapper iife
