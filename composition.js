@@ -97,3 +97,40 @@
   }
   
 ;}());//end wrapper iife
+
+/* 
+  Analyzing code, we see that ... the second function (f2) we passed in our compose function is going to be our inner function, the one that is going to be called first. 
+  The last function you pass in is the one that is more likely to change, so it should be the first one that operates on the value.
+  The result of that will be passed to the outer function, which is the first one that we pass in.
+   example:
+*/
+
+(function(){
+  'use strict';
+
+    const addOne = x=> x + 1;
+    const timesTwo = x=> x * 2;
+    const compose = (f1, f2)=> {
+       return val=> {
+          return  f1(f2(val));
+       }
+    }
+
+    const addOneTimesTwo = compose(timesTwo, addOne);
+    console.log(addOneTimesTwo(3)); // 8
+    console.log(addOneTimesTwo(4)); // 10
+  // or
+   const timesTwoAddOne = compose(addOne, timesTwo);
+   console.log(timesTwoAddOne(3)); // 7
+   console.log(timesTwoAddOne(4)); // 9
+}());//end wrapper iife
+
+/* 
+  The point here is that we trying to keep the examples simple to a very basic application for which is not really necessary to use such a composition, just so that it is more understandable.
+  We are going to use this concept for much more complex things.
+  We are passing in functions and composing them in a  consistent order.
+  Keep track of the return types that you are working with as well because every inner function is returning a value that is going to be operated on by the outer functions.
+  Those outer functions need to be expecting the return value that comes from the inner functions.
+  DO NOT try to use compose with impure functions coz you want to make sure that your functions always return the same value regardless of the state outside of them, and that they don't make changes to the state outside of themselves. 
+
+*/
