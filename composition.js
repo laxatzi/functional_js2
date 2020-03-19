@@ -17,7 +17,7 @@
 
    const animals = ['dog', 'cat', 'tiger'];
 
-   let threeLetterAnimalWordsConcatenated = animals.filter(threeLetterAnimalWords)
+   const threeLetterAnimalWordsConcatenated = animals.filter(threeLetterAnimalWords)
                                                    .map(capitalize)
                                                    .reduce(concatWords);
 
@@ -25,4 +25,37 @@
 
 }());//end wrapper iife
 
+// Another thing that javascript allow us to do is to pass functions to other functions using nested parentheses. 
+// When a function followed by parenthesis is being passed to another function, it is not passed as the function, but rather as the returned value of the function. example:
 
+(function(){
+  'use strict';
+
+  const addOne = x=> x+1;
+  const timesTwo = x=> x * 2;
+  console.log(addOne(timesTwo(3))); // 7
+  console.log(timesTwo(addOne(3))); // 8  *So when it comes to nesting functions, as I said, the most important thing to keep in mind is that the order matters. The operation in the innermost parentheses is always going to be performed first
+
+}());//end wrapper iife
+
+//Nesting has no limits in JavaScript
+/* 
+  We can keep nesting just as far as we want, as long as we follow a few simple rules.
+  Each nested function must be a pure function.
+  We want to make sure that they pass their return values.
+  We respect the order in which these operations are being performed.
+
+  Provided that we follow the above rules, we can nest to our hearts content.
+*/
+// example
+
+(function(){
+  'use strict';
+  const addOne = x=> x+1;
+  const timesTwo = x=> x * 2;
+  console.log(addOne(timesTwo(3))); // 7
+  console.log(timesTwo(addOne(3)));
+  console.log(timesTwo(addOne(addOne(timesTwo(3)))));  // 16
+  console.log(addOne(timesTwo(timesTwo(addOne(3)))));  // 17
+
+}());//end wrapper iife
