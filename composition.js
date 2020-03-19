@@ -126,7 +126,7 @@
 }());//end wrapper iife
 
 /* 
-  The point here is that we trying to keep the examples simple to a very basic application for which is not really necessary to use such a composition, just so that it is more understandable.
+  The point here is that we trying to keep the examples simple to a very basic application for which is not really necessary to use such a composition, just so that the concept of composition is more understandable.
   We are going to use this concept for much more complex things.
   We are passing in functions and composing them in a  consistent order.
   Keep track of the return types that you are working with as well because every inner function is returning a value that is going to be operated on by the outer functions.
@@ -134,3 +134,55 @@
   DO NOT try to use compose with impure functions coz you want to make sure that your functions always return the same value regardless of the state outside of them, and that they don't make changes to the state outside of themselves. 
 
 */
+
+// Use of libraries for function composition
+/* 
+  To be honest, there are some problems with the simple compose that we have created.
+  First, it doesn't handle nested functions that take multiple (more than two) arguments.
+  We need to be able to support more args coz variadic functions are an important aspect of composing.
+  Example:
+*/
+
+(function(){
+  'use strict';
+
+  const compose = (f1,f2)=> {
+     return val=>{
+        return f1(f2(val));
+     }
+  }
+
+  const addOne = x=> x+1;
+  const divide = (x,y)=> x/y;
+  const divideAndAdd = compose(addOne, divide);
+
+  console.log(divideAndAdd(4,2)); // NaN 
+
+}());//end wrapper iife
+
+// comment the code
+/* 
+  javascript is returning not an number because it is not ready to deal with this.
+  Our compose was designed to accept a single value.
+  If we were trying to pass in multiple values, we'd had to do something more complex to the way that it is structured and then we'd only be able to accept two values.
+  There are other problems too. for example our simple compose doesn't handle more than two functions.
+
+  example:
+*/
+
+(function(){
+  'use strict';
+  const compose = (f1,f2)=> {
+   return val=>{
+      return f1(f2(val));
+   }
+}
+
+const addOne = x=> x+1;
+  const addOneThreeTimes =  compose(addOne, addOne, addOne);
+  console.log(addOneThreeTimes(4)); // 6 --here we've got 6 instead of 7 because javascript IGNORES extra arguments when creating a function. It just ignores them end doesn't returns an error.
+
+}());//end wrapper iife
+
+// This is the reason you should adopt a functional programming library like underscore or Ramda that includes a robust compose method that you are comfortable working with.
+// Using a library is often as simple as just including it in your code, and then referencing it appropriately. Once you understand how functional programming works, choosing a library is the best way to go.
