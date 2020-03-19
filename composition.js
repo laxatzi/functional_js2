@@ -59,3 +59,16 @@
   console.log(addOne(timesTwo(timesTwo(addOne(3)))));  // 17
 
 }());//end wrapper iife
+
+// Manual Composition
+// Using composition to make nesting cleaner
+
+(function(){
+  'use strict';
+
+    const addOne = x=> x+1;
+    const timesTwo = x=> x*2;
+    const addOneTimesTwo = x=> timesTwo(addOne(num));
+    console.log(addOneTimesTwo(3)); // 
+
+}());//end wrapper iife
