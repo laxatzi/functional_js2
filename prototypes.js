@@ -112,3 +112,31 @@ console.log(taoTheBear.name); // 9
    console.log(taoTheBear.name); // 'Tao'
 
 }());//end wrapper iife
+
+//By moving the shared methods to their own object and referencing that object inside of our Animal function, we have now solved the problem of memory waste and overly large animal objects.
+
+// OBJECT CREATE
+ // Object.create
+
+/* 
+  Object.create allows you to create an object and whenever there is a failed property lookup on that object, it can consult another object to see if that other object has the property. 
+  example:
+*/
+(function(){
+  'use strict';
+
+  const parent = {
+     name: "Katerina",
+     age: 45,
+     heritage: "Greek"
+  }
+
+  const child = Object.create(parent);
+  child.name = "John";
+  child.age = 7;
+
+  console.log(child.name);// John
+  console.log(child.age);// 7 
+  console.log(child.heritage);// Greek
+
+}());//end wrapper iife
