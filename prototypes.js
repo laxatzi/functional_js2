@@ -56,7 +56,59 @@
 }
 
 const villyTheTiger = Animal('Villy', 10);
+console.log(villyTheTiger.name); // Villy
+
 const taoTheBear = Animal('Tao', 9);
+console.log(taoTheBear.name); // 9
 
 }());//end wrapper iife
 
+//In the above code whenever you want to create a 'new animal', or a new 'instance' broadly speaking, all we have to do is to invoke the Animal function, passing it the animals name and energy level.
+
+/* 
+  The methods we have created, though, are not only dynamic but also abstract. There is no need to recreate them again and again, each time we create a new Animal.
+  This way we make every animal object bigger than it needs to be. 
+  A cleaner way to write our code is to move those methods to their own object, and then have each animal reference that object.
+  We call this pattern 'Functional Instantiation with Shared Methods.
+  Example:
+
+*/
+(function(){
+  'use strict';
+
+  // methods sit on their own object (animalMethods)
+  const animalMethods = {
+     eat(amount) {
+        console.log(`${this.name} is eating`);
+        this.energy += amount;
+     }
+   ,
+     
+        sleep(hours){
+           console.log(`${this.name} is sleeping`);
+           this.energy += amount;
+        }
+     ,
+     
+        play(hours){
+           console.log(`${this.name} is playing`);
+           this.energy -= amount;
+        }
+     } // end of variable
+  
+   // our Animal function --here we referencing that object
+   function Animal(name, energy){
+      let animal = {};
+      animal.name = name;
+      animal.energy = energy;
+      animal.eat = animalMethods.eat;
+      animal.sleep = animalMethods.sleep;
+      animal.play = animalMethods.play;
+
+      return animal;
+   }
+    
+   const taoTheBear = Animal('Tao', 9);
+   console.log(taoTheBear.name); // 'Tao'
+
+}());//end wrapper iife
