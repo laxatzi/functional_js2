@@ -1,26 +1,28 @@
 (function(){
 'use strict';
-var result;
 
-function getText()  {
-   var getPrompt = prompt("Where do you live?");
-   capitalize(getPrompt);
-   alert(result.join(" "));
-}
+  var result;
 
-function capitalize(text){
-  var splitedText = text.split(" ");
-  var capitalizedText= "";
-  result = [];
-
-  for(var j = 0; j < splitedText.length; j++){
-    capitalizedText = [
-      splitedText[j].charAt(0).toUpperCase(),
-      splitedText[j].substring(1)
-    ].join("");
-    result.push(capitalizedText);
+  function questAnswer(){
+    var getPrompt = prompt("Where do you come from?");
+    capitalize(getPrompt);
+    console.log(result.join(" "));
   }
-}
+  
+  function capitalize(text){
+    result = [];
+    var transformed;
+    var splitedText = text.split(" ");
 
-  document.getElementById('main_button').onclick = getText;
+    for(var i = 0; i < splitedText.length; i++){
+      transformed = [
+        splitedText[i].charAt(0).toUpperCase(),
+        splitedText[i].substring(1)
+      ].join("");
+      result.push(transformed);
+    }
+  }
+
+  document.getElementById('main_button').onclick = questAnswer;
+
 }());//end wrapper iife
