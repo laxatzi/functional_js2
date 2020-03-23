@@ -140,3 +140,40 @@ console.log(taoTheBear.name); // 9
   console.log(child.heritage);// Greek
 
 }());//end wrapper iife
+
+// Now with Object.create in our tool belt, instead of adding all the shared to the animal one by one, we can delegate to the animalMethods object instead.
+  // example:
+
+  (function(){
+    'use strict';
+   
+    const animalMethods = {
+      eat(amount) {
+        console.log(`${this.name} is eating.`);
+        this.energy += amount;
+      },
+      sleep(length) {
+        console.log(`${this.name} is sleeping.`);
+        this.energy += length;
+      },
+      play(length) {
+        console.log(`${this.name} is playing.`);
+        this.energy -= length;
+      }
+    }
+    
+    function Animal (name, energy) {
+      let animal = Object.create(animalMethods);
+      animal.name = name;
+      animal.energy = energy;
+    
+      return animal;
+    }
+    
+    const leo = Animal('Leo', 7);    
+    leo.eat(10); // "Leo is eating."
+
+   
+   }());//end wrapper iife
+
+   //So now we call leo.eat, javascript will look up for the 'eat' method on the 'leo' object. That look up will, of course, fail and then, because of Object.create, it will delegate to the animalMethods object which is where it will find 'eat'.
