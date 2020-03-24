@@ -306,3 +306,19 @@ console.log(taoTheBear.name); // 9
 
 }());//end wrapper iife
 
+// Bear in mind that the reason the 'this' keyword is created for us is because we called the constructor function with the 'new' keyword. If you leave the 'new' keyword off when invoking the function, that 'this' object never gets created nor does it get implicitly returned. 
+  // For example
+
+  (function(){
+    'use strict';
+  
+    function Animal(name, energy){
+      this.name = name;
+      this.energy = energy;
+    }
+      
+  const leo = Animal("Leo", 10);
+  console.log(leo); // undefined
+
+  }());//end wrapper iife
+
