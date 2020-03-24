@@ -1,4 +1,7 @@
 // Javascript Prototype
+
+// * Distilling 'A Beginner's Guide to JavaScript's Prototype' by by Tyler McGinnis in https://tylermcginnis.com
+
   // You can't get very far in javascript without dealing with objects. They are foundational to almost every aspect of the language. Objects are key/value pairs. 
   // The most common way to create an object is with curly braces, and then you add properties and methods to the object using dot notation.
 
@@ -232,3 +235,74 @@ console.log(taoTheBear.name); // 9
   snoopy.play(5); // "snoopy is playing"
 
 }());//end wrapper iife
+
+// Concluding: 'prototype' is just a property that every function in javascript has, and it allows us to share methods across all instances of a function. All our functionality is still the same but now instead of heaving to manage a separate object for all the methods, we can just use another object that comes built into the Animal function itself. The Animal.prototype
+
+// What is nice about that slow, methodical approach we took to get here is that we now have a deep understanding of how the 'new' keyword is doing under the hood.
+// Looking back at our animal constructor, the two most important parts were 1) Creating the object , and 2) Returning it. 
+// Without creating the object with Object.create we wouldn't be able to delegate to function's prototype on failed lookups. Without the return statement, we wouldn't get back created object.
+
+(function(){
+  'use strict';
+
+  function Animal(name, energy){
+    let animal = Object.create(Animal.prototype); // --
+    animal.name = name;
+    animal.energy = energy;
+
+    return animal; // --
+  }
+
+}());//end wrapper iife
+
+// Here the cool thing about 'new' -- when you invoke a function using the 'new' keyword, those two lines of code are done for you under the hood and the object that is created is called 'this'.
+
+// Using comments to express what is happening under the hood and assuming the Animal constructor is called with the 'new' keyword:
+
+(function(){
+  'use strict';
+  function Animal(name, energy){
+// const this = Object.create(Animal.prototype);
+  this.name = name;
+  this.energy = energy;
+
+  // return this;
+
+  } // end function
+
+  const leo = new Animal('Leo', 10);
+  const snoopy = new Animal('Snoopy', 7);
+
+
+}());//end wrapper iife
+
+// and the whole code without 'under the hood' explanation comments
+
+(function(){
+  'use strict';
+
+  function Animal (name, energy) {
+    this.name = name
+    this.energy = energy
+  }
+  
+    Animal.prototype.eat = function (amount) {
+      console.log(`${this.name} is eating.`)
+      this.energy += amount
+    }
+    
+    Animal.prototype.sleep = function (length) {
+      console.log(`${this.name} is sleeping.`)
+      this.energy += length
+    }
+    
+    Animal.prototype.play = function (length) {
+      console.log(`${this.name} is playing.`)
+      this.energy -= length
+    }
+  
+  const leo = new Animal('Leo', 7)
+  const snoop = new Animal('Snoop', 10)
+
+}());//end wrapper iife
+
