@@ -322,3 +322,45 @@ console.log(taoTheBear.name); // 9
 
   }());//end wrapper iife
 
+  // If javascript is not your first programming language you might feel a little restless.
+  // Why don't we use a native Class method?
+  /* 
+      For those unfamiliar, a Class allows you to create a blueprint for an object. Then whenever you create an instance of that Class, you get an object with the properties and methods defined in the blueprint. 
+      Sound familiar? That is basically what we did with our Animal constructor function above.
+      However, instead of using the 'class' keyword, we just added a regular old JS function to recreate the same functionality. 
+      In 2015, ECMAScript, the official javascript specification, released ES6 with support for Classes and the 'class' keyword. 
+      Example of how our Animal constructor function would look like with the new 'class' syntax:
+  */
+
+  (function(){
+    'use strict';
+  
+    class Animal {
+      constructor(name, energy){
+        this.name = name;
+        this.energy = energy
+      }
+      eat(amount){
+        console.log(`${this.name} is eating`);
+        this.energy += amount;
+      }
+      sleep(hours){
+        console.log(`${this.name} is sleeping`);
+        this.energy += hours;
+      }
+      play(hours){
+        console.log(`${this.name} is playing`);
+        this.energy -= hours;
+      }
+    }
+  
+    const leo = new Animal('Leo', 7);
+    const snoop = new Animal('Snoop', 10);
+
+  }());//end wrapper iife
+
+  /* 
+      So, is this is the new way to create classes why did we spent so much time writing code the old way? 
+      The reason for that is because the new way (with the 'class' keyword), is primarily just syntactical sugar over the existing way we have called the pseudoclassical pattern. 
+      In order to fully understand the convenience syntax of ES6 classes, you first must understand the pseudoclassical pattern.
+  */
