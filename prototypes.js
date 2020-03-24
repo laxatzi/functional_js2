@@ -8,23 +8,23 @@
   (function(){
   'use strict';
   
-  let animal = {}
-   animal.name = 'Leo'
-   animal.energy = 10
+  let animal = {};
+   animal.name = 'Leo';
+   animal.energy = 10;
 
       animal.eat = function (amount) {
-      console.log(`${this.name} is eating.`)
-      this.energy += amount
+      console.log(`${this.name} is eating.`);
+      this.energy += amount;
       }
 
       animal.sleep = function (length) {
-      console.log(`${this.name} is sleeping.`)
-      this.energy += length
+      console.log(`${this.name} is sleeping.`);
+      this.energy += length;
       }
 
       animal.play = function (length) {
-      console.log(`${this.name} is playing.`)
-      this.energy -= length
+      console.log(`${this.name} is playing.`);
+      this.energy -= length;
       }
 
 }());//end wrapper iife
@@ -55,7 +55,7 @@
          this.energy -= hours;
       }
 
-  return animal;
+  return animal;  
 }
 
 const villyTheTiger = Animal('Villy', 10);
@@ -66,7 +66,7 @@ console.log(taoTheBear.name); // 9
 
 }());//end wrapper iife
 
-//In the above code whenever you want to create a 'new animal', or a new 'instance' broadly speaking, all we have to do is to invoke the Animal function, passing it the animals name and energy level.
+//In the above code whenever you want to create a new  'animal', or a new 'instance' broadly speaking, all we have to do is to invoke the Animal function, passing it the animals name and energy level.
 
 /* 
   The methods we have created, though, are not only dynamic but also abstract. There is no need to recreate them again and again, each time we create a new Animal.
