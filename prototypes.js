@@ -73,6 +73,7 @@ console.log(taoTheBear.name); // 9
   Example:
 
 */
+
 (function(){
   'use strict';
 
@@ -115,9 +116,9 @@ console.log(taoTheBear.name); // 9
 
 //By moving the shared methods to their own object and referencing that object inside of our Animal function, we have now solved the problem of memory waste and overly large animal objects.
 
+
 // OBJECT CREATE
  // Object.create
-
 /* 
   Object.create allows you to create an object and whenever there is a failed property lookup on that object, it can consult another object to see if that other object has the property. 
   example:
@@ -137,7 +138,7 @@ console.log(taoTheBear.name); // 9
 
   console.log(child.name);// John
   console.log(child.age);// 7 
-  console.log(child.heritage);// Greek
+  console.log(child.heritage);// Greek  
 
 }());//end wrapper iife
 
@@ -177,3 +178,24 @@ console.log(taoTheBear.name); // 9
    }());//end wrapper iife
 
    //So now we call leo.eat, javascript will look up for the 'eat' method on the 'leo' object. That look up will, of course, fail and then, because of Object.create, it will delegate to the animalMethods object which is where it will find 'eat'.
+
+   // Prototypal Instantiation
+   /* 
+     So far, so good. 
+     But, it seems just a bit 'hacky' to have to manage a separate object (animalMethods) in order to share methods across instances. That seems like a common feature that you'd want to be implemented into the language itself. This is when 'prototype' comes into play.
+
+     Simply put...every function in javascript has a 'prototype' property that references an object.
+     Example:
+   */
+
+   (function(){
+     'use strict';
+
+     function doThing(){}
+     console.log(doThing.prototype); //[object Object] { ... }
+
+    }());//end wrapper iife
+
+// What if instead of creating a separate object to manage our methods (like we are doing with animalMethods), we just put each of those methods on the Animal function's prototype? Then all we'd have to do is instead of using Object.create to delegate to animalMethods, we could use it to delegate to Animal.prototype. We call this pattern 'Prototypal Instantiation'. 
+
+// Prototypal Instantiation
