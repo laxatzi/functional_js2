@@ -92,3 +92,38 @@ console.log(panda.name);
    const tiger =  new Animal("Sirhan", 10);
    const panda = new Animal("Tao-Tao", 7);
 }());//end wrapper iife
+
+// Using Classes in javascript 
+
+(function(){
+   'use strict';
+
+  class Animal{
+     constructor(name, energy){
+        this.name = name;
+        this.energy = energy;
+     }
+     eat(amount){
+      console.log(`${this.name} is eating`);
+      this.energy += amount;
+   };
+   
+   play(hours){
+      console.log(`${this.name} is eating`);
+         this.energy -= hours;
+   };
+   
+   sleep(hours){
+      console.log(`${this.name} is sleeping`);
+         this.energy += hours;
+   };
+
+  }// end of class
+
+  const tiger =  new Animal("Sirhan junior", 10);
+   const panda = new Animal("Tao-Tao junior", 7);
+
+  console.log(tiger.name);
+  console.log(panda.name);
+  
+}());//end wrapper iife
