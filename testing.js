@@ -56,7 +56,6 @@
     }
  } // end of class
 
-
   // Instead of adding an onclick to the button we are going to add an eventListener 
  document.getElementById('button').addEventListener('click', function(){
    let getPrompt = prompt("Where do you live?");
