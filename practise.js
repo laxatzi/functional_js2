@@ -127,3 +127,35 @@ console.log(panda.name);
   console.log(panda.name);
   
 }());//end wrapper iife
+
+(function(){
+   'use strict';
+
+  class CapSomeText {
+     constructor(text){
+        this.text = text;
+     }
+
+     capitalize(str){
+        const firstLetter = str.charAt(0).toUpperCase();
+        const restOfWord = str.substring(1);
+        return [firstLetter, restOfWord].join("");
+     };
+     capitWords(){
+        let result = [];
+        const strAsArray = this.text.split(" ");
+        //loop
+        for(let j = 0; j<strAsArray.length; j++){
+           result.push(this.capitalize(strAsArray[j]));
+        }
+        return result.join(" ");
+     }
+  } // end of class
+
+  document.getElementById('button').addEventListener('click', function(){
+    let getPrompt = prompt("Where do you live?");
+    const someTextInstance = new CapSomeText(getPrompt); //When we create an instance of this object, we have to use the new keyword
+   console.log(someTextInstance.capitWords());
+ })
+
+}());//end wrapper iife

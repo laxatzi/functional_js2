@@ -29,38 +29,39 @@
 
 // capitalization with OOP 
 
-(function(){
+
+ (function(){
   'use strict';
 
-  // SomeText is capitalized because it is going to be our object
-  // We create a local copy of 'text' to have something to work with
-  var SomeText = function(text) {
-    this.text = text;
-  };
- 
-//We declared this new method on the prototype of our SomeText object. This way we can create multiple instances without them having separate copies in memory of each of this methods.
- // Now it is obvious why we passed our parameter 'text' to the 'this.text'. Otherwise this method defined on the prototype would not have access to 'text'.
+ class CapSomeText {
 
-  SomeText.prototype.capitalize = function(str){
-    var firstLetter = str.charAt(0).toUpperCase();
-    var restOfWord = str.substring(1);
-    return [firstLetter, restOfWord].join("");
-  };
+    constructor(text){
+       this.text = text;
+    }
 
- SomeText.prototype.capitWords = function() {
-   var result = [];
-   var strAsArray = this.text.split(" ");
-   for(var j = 0; j < strAsArray.length; j++){
-     result.push(this.capitalize(strAsArray[j]));
-   }
-   return result.join(" ");
- };
+    capitalize(str){
+       const firstLetter = str.charAt(0).toUpperCase();
+       const restOfWord = str.substring(1);
+       return [firstLetter, restOfWord].join("");
+    };
 
- // Instead of adding an onclick to the button we are going to add an eventListener 
+    capitWords(){
+       let result = [];
+       const strAsArray = this.text.split(" ");
+       //loop
+       for(let j = 0; j<strAsArray.length; j++){
+          result.push(this.capitalize(strAsArray[j]));
+       }
+       return result.join(" ");
+    }
+ } // end of class
+
+
+  // Instead of adding an onclick to the button we are going to add an eventListener 
  document.getElementById('button').addEventListener('click', function(){
-   var getPrompt = prompt("Where do you live?");
-   var someTextInstance = new SomeText(getPrompt); //When we create an instance of this object, we have to use the new keyword
-   console.log(someTextInstance.capitWords());
- })
+   let getPrompt = prompt("Where do you live?");
+   const someTextInstance = new CapSomeText(getPrompt); //When we create an instance of this object, we have to use the new keyword
+  console.log(someTextInstance.capitWords());
+ });
 
 }());//end wrapper iife
