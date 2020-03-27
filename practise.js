@@ -176,6 +176,21 @@ console.log(panda.name);
      const getPrompt = prompt("Where do you live?");
      alert(capMoreWords(capitalize, getPrompt));
   }
-  document.getElementById('main_button').addEventListener('click', feedback);
+ // document.getElementById('main_button').addEventListener('click', feedback);
 
+}());//end wrapper iife
+
+// Refactor code to ES 2015 syntax
+
+(function(){
+  'use strict';
+
+   const capitalize = str=> [str.charAt(0).toUpperCase(), str.substring(1)].join("");
+   const capMoreWords = (fn, str)=> str.split(" ").map(fn).join(" ");
+   const feedback = (el)=> {
+      const getPrompt = prompt("Where do you live?");
+      alert(capMoreWords(capitalize, getPrompt));
+   }
+   document.getElementById('main_button').addEventListener('click', feedback);
+   
 }());//end wrapper iife

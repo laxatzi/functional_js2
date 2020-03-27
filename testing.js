@@ -91,16 +91,27 @@
   const capitalize = function(str){
     return [str.charAt(0).toUpperCase(), str.substring(1)].join("");
   }
-
   const capWords = function(fn, str){
     return str.split(" ").map(fn).join(" ");
   }
-
- const feedback = function(el){
+  const feedback = function(el){
    const getPrompt = prompt("Where do you live?");
    alert(capWords(capitalize, getPrompt));
  }
+ //document.getElementById('main_button').addEventListener('click', feedback);
+}());//end wrapper iife
 
- document.getElementById('main_button').addEventListener('click', feedback);
+//  Refactor code to ES 2015 syntax
+
+(function(){
+  'use strict';
+
+  const capitalize = str=> [str.charAt(0).toUpperCase(), str.substring(0)].join("");
+  const capWords = (fn, str)=> str.split(" ").map(fn).join(" ");
+  const feedback = el=> {
+    const getPrompt = prompt("Where do you live?");
+    alert(capWords(capitalize, getPrompt));
+  }
+  document.getElementById('main_button').addEventListener('click', feedback);
 
 }());//end wrapper iife
