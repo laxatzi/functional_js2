@@ -23,7 +23,7 @@
     }
   }
 
-  document.getElementById('main_button').onclick = questAnswer;
+  //document.getElementById('aButton').onclick = questAnswer;
 
 }());//end wrapper iife
 
@@ -37,7 +37,7 @@
 
     constructor(text){
        this.text = text;
-    }
+    };
 
     capitalize(text){
        const firstLetter = text.charAt(0).toUpperCase();
@@ -53,7 +53,7 @@
           result.push(this.capitalize(textAsArray[j]));
        }
        return result.join(" ");
-    }
+    };
  } // end of class
 
   // Instead of adding an onclick to the button we are going to add an eventListener 
@@ -83,3 +83,24 @@
 -- The loop that we are creating is changing a variable outside of itself. And that can make it difficult to reason logically about what the code is doing.
 -- Although this code is easier to test than the imperative code we saw earlier, it is still relatively difficult to test because our object definition is spread across the prototype in multiple places.
 */
+
+//Functional Programming approach
+(function(){
+  'use strict';
+
+  const capitalize = function(str){
+    return [str.charAt(0).toUpperCase(), str.substring(1)].join("");
+  }
+
+  const capWords = function(fn, str){
+    return str.split(" ").map(fn).join(" ");
+  }
+
+ const feedback = function(el){
+   const getPrompt = prompt("Where do you live?");
+   alert(capWords(capitalize, getPrompt));
+ }
+
+ document.getElementById('main_button').addEventListener('click', feedback);
+
+}());//end wrapper iife

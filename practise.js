@@ -161,3 +161,21 @@ console.log(panda.name);
 
 }());//end wrapper iife
 
+// Functional approach 
+(function(){
+   'use strict';
+  const capitalize = function(str){
+     return [str.charAt(0).toUpperCase(), str.substring(1)].join("");
+  }
+
+  const capMoreWords = function(fn, str){
+     return str.split(" ").map(fn).join(" ");
+  }
+
+  const feedback = function(el){
+     const getPrompt = prompt("Where do you live?");
+     alert(capMoreWords(capitalize, getPrompt));
+  }
+  document.getElementById('main_button').addEventListener('click', feedback);
+
+}());//end wrapper iife
