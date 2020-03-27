@@ -148,8 +148,6 @@ console.log(panda.name);
     capMoreWords(){
        let result = [];
        const splitedWords = this.text.split(" ");
-
-       // loop
        for(let j = 0; j< splitedWords.length; j++){
           result.push(this.capitalize(splitedWords[j]));
        }
@@ -162,7 +160,7 @@ console.log(panda.name);
   document.getElementById("button").addEventListener('click', function(){
     let getPrompt = prompt("Where do you live?");
     const capitalizeWords =  new CapSentence(getPrompt);
-    console.log(capitalizeWords.capMoreWords());
+    alert(capitalizeWords.capMoreWords());
   });
 
 }());//end wrapper iife

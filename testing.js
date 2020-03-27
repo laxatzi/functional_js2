@@ -39,18 +39,18 @@
        this.text = text;
     }
 
-    capitalize(str){
-       const firstLetter = str.charAt(0).toUpperCase();
-       const restOfWord = str.substring(1);
+    capitalize(text){
+       const firstLetter = text.charAt(0).toUpperCase();
+       const restOfWord = text.substring(1);
        return [firstLetter, restOfWord].join("");
     };
 
     capitWords(){
        let result = [];
-       const strAsArray = this.text.split(" ");
+       const textAsArray = this.text.split(" ");
        //loop
-       for(let j = 0; j<strAsArray.length; j++){
-          result.push(this.capitalize(strAsArray[j]));
+       for(let j = 0; j<textAsArray.length; j++){
+          result.push(this.capitalize(textAsArray[j]));
        }
        return result.join(" ");
     }
@@ -60,7 +60,7 @@
  document.getElementById('button').addEventListener('click', function(){
    let getPrompt = prompt("Where do you live?");
    const someTextInstance = new CapSomeText(getPrompt); //When we create an instance of this object, we have to use the new keyword
-  console.log(someTextInstance.capitWords());
+  alert(someTextInstance.capitWords());
  });
 
 }());//end wrapper iife
