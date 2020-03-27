@@ -131,66 +131,33 @@ console.log(panda.name);
 // OOP
 (function(){
    'use strict';
-
-  class CapSentence  {
-
+// class:CapSentence  functions:capitalize(text) , capMoreWords
+ class CapSentence{
     constructor(text){
-       this.text = text;
+      this.text = text;
     }
 
-    capitalize(text) {
-       
-     const firstLetter = text.charAt(0).toUpperCase();
-     const restOfWord = text.substring(1);
-     return [firstLetter, restOfWord].join("");
+    capitalize(text){
+       const firstLetter = text.charAt(0).toUpperCase();
+       const restOfWord = text.substring(1);
+       return [firstLetter, restOfWord].join("");
     }
 
     capMoreWords(){
        let result = [];
-       const splitedWords = this.text.split(" ");
-       for(let j = 0; j< splitedWords.length; j++){
-          result.push(this.capitalize(splitedWords[j]));
+       const textAsArr = this.text.split(" ");
+       for(let j = 0; j < textAsArr.length; j++){
+         result.push(this.capitalize(textAsArr[j]));
        }
        return result.join(" ");
-    }
-
-
-  }  // end of class
-
-  document.getElementById("button").addEventListener('click', function(){
-    let getPrompt = prompt("Where do you live?");
-    const capitalizeWords =  new CapSentence(getPrompt);
-    alert(capitalizeWords.capMoreWords());
-  });
+    }// end capMoreWords
+ }
+ 
+   document.getElementById("button").addEventListener("click", function(){
+      const getPrompt = prompt("Where do you live?");
+      const feedback = new CapSentence(getPrompt);
+      alert(feedback.capMoreWords());
+   })
 
 }());//end wrapper iife
 
-// imperative code 
-(function(){
-   'use strict';
-   
-     var result;
-   
-     function questAnswer(){
-       var getPrompt = prompt("Where do you come from?");
-       capitalize(getPrompt);
-       console.log(result.join(" "));
-     }
-     
-     function capitalize(text){
-       result = [];
-       var transformed;
-       var splitedText = text.split(" ");
-   
-       for(var i = 0; i < splitedText.length; i++){
-         transformed = [
-           splitedText[i].charAt(0).toUpperCase(),
-           splitedText[i].substring(1)
-         ].join("");
-         result.push(transformed);
-       }
-     }
-   
-     document.getElementById('main_button').onclick = questAnswer;
-   
-   }());//end wrapper iife
