@@ -101,12 +101,26 @@
  //document.getElementById('main_button').addEventListener('click', feedback);
 }());//end wrapper iife
 
-//  Refactor code to ES 2015 syntax
+// Commenting on the above piece of functional code
+/* 
+  Functional style takes advantage of the fact that JS allows you to use functions as first class objects. Which means that you can use them as arguments and you can pass them around from function to function just as any other variable. Functional style also encourages you not to make changes to values that are outside of your functions or change state of the application while you are executing the function.
+  What is better about this example? 
+  The code is much more concise, easier to read and easier to reason about.
+  The functions are defined in an independent and reusable way.
+  Our 'capitalize' function could be dropped into any place that you need to pass in a string and capitalize it. 
+  Our 'capWords' function doesn't depend on 'capitalize' function. It just depends on whatever function you happen to pass in that performs a function on a single word.
+  There is no reliance on some abstract object being passed around.
+  Nothing is happening outside of these functions that is changing as a result of what is inside the functions. 
+  As a result, this code is much easier to unit test, because you can write a simple test that verifies that each of these functions does what you expect it to do with a variety of inputs.
+  Those functions behave that way REGARDLESS of what context they are in.
 
-(function(){
+*/
+
+//  Refactor code to ES 2015 syntax
+{
   'use strict';
 
-  const capitalize = str=> [str.charAt(0).toUpperCase(), str.substring(0)].join("");
+  const capitalize = str=> [str.charAt(0).toUpperCase(), str.substring(1)].join("");
   const capWords = (fn, str)=> str.split(" ").map(fn).join(" ");
   const feedback = el=> {
     const getPrompt = prompt("Where do you live?");
@@ -114,4 +128,10 @@
   }
   document.getElementById('main_button').addEventListener('click', feedback);
 
-}());//end wrapper iife
+} //The {} is a block that, when encountered, will immediately execute just like an immediately invoked function expression.
+/* 
+  Now we end up with this code that is so much sorter and very concise, and does everything that we wanted to do. And what is different about this code compared to what we have done before is that, first of all, it is certainly extremely concise. 
+  There are NO mutable variables, we haven't used the 'var' keyword anywhere, and we really didn't need to since we defined everything as constants that we didn't need to worry about changing.
+  We defined our functions with implied return values. 
+  We didn't have to use the 'return' keyword.
+*/
