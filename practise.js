@@ -224,3 +224,22 @@ console.log(panda.name);
  console.log(factorialPTC(5)); // 120
 
 }());//end wrapper iife
+
+//   CURRYING
+
+function greetCurried(greet, name){
+   return function(name){
+      if(typeof(greet) !== 'string'){
+         return "Greetings!";
+      }
+      else if(typeof(name) !== 'string'){
+         return `${greet}!`;
+      }
+   return `${greet}, ${name}!`;
+   }
+}// end of curried
+
+const greetHi = greetCurried("Hi");
+console.log(greetHi("Peter"));
+const greetHello = greetCurried("Hello");
+console.log(greetHello("Helen"));
