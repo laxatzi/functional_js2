@@ -226,8 +226,9 @@ console.log(panda.name);
 }());//end wrapper iife
 
 //   CURRYING
-
-function greetCurried(greet, name){
+(function(){
+  'use strict';
+  function greetCurried(greet, name){
    return function(name){
       if(typeof(greet) !== 'string'){
          return "Greetings!";
@@ -243,3 +244,42 @@ const greetHi = greetCurried("Hi");
 console.log(greetHi("Peter"));
 const greetHello = greetCurried("Hello");
 console.log(greetHello("Helen"));
+
+}());//end wrapper iife
+
+// Refactor code to ES6 standards
+(function(){
+   'use strict';
+
+  const greetCurried = (greet, name)=> {
+   return function(name){
+      if(typeof(greet) !== 'string'){
+         return "Greetings!";
+      }
+      else if(typeof(name) !== 'string'){
+         return `${greet}!`;
+      }
+   return `${greet}, ${name}!`;
+   } 
+  }
+
+  const greetHello = greetCurried("Hello");
+  console.log(greetHello("Helen"));
+
+}());//end wrapper iife
+
+
+// variadic functions
+ // currying variadic function
+
+const greetDeepCurried = greeting=> seperator=> emphasis=> name=> {
+   return greeting + seperator+ name + emphasis;
+}
+
+const greetHesitation = greetDeepCurried("Hello")("seperator")("...")("?");
+console.log(greetHesitation("John")); // Hello...John?
+const sayHello = greetDeepCurried("Hello")(",");
+console.log(sayHello("!")("Antonis"));
+
+
+
