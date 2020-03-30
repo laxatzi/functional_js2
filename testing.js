@@ -135,3 +135,57 @@
   We defined our functions with implied return values. 
   We didn't have to use the 'return' keyword.
 */
+
+//RECURSIONS
+/* 
+  Repeat calling function from within (and then iterating), until a completion condition is met.
+  Ideally recursion function is pure.
+  Example of an old code, not clean, way of recursion function with a typical factorial:
+*/
+
+(function(){
+  'use strict';
+
+  const factorial = number=> {
+    let result = 1;
+    for(let j = number; j>1; j--){
+       result *= j;
+    }
+    return result;
+  }
+console.log(factorial(6)); // 720
+}());//end wrapper iife
+
+// Same factorial using the while loop
+(function(){
+  'use strict';
+
+  const factorial = number=> {
+    let j = number;
+    let result =1;
+    while(j>1){
+      result *= j;
+      j--;
+    }
+    return result;
+  }
+
+  console.log(6); // 720
+
+}());//end wrapper iife
+
+
+// Use recursion for a factorial function
+(function(){
+  'use strict';
+
+  const factorial = number=>{
+    if(number <= 0){
+      return 1;
+    }
+    return number *= factorial(number-1);
+  }
+
+  console.log(factorial(6)); // 720
+
+}());//end wrapper iife

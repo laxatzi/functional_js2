@@ -10,7 +10,7 @@
 
 (function(){
   'use strict';
-    const factor = (number)=> {
+    const factor = number=> {
        let result = 1;
        for(let j = number; j>1; j--){
           result *= j;
