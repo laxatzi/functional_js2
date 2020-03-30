@@ -194,3 +194,33 @@ console.log(panda.name);
    document.getElementById('main_button').addEventListener('click', feedback);
    
 }());//end wrapper iife
+
+// Recursion
+(function(){
+  'use strict';
+
+ const factorial = number=> {
+    if(number <= 0){
+       return 1;
+    }
+    return number * factorial(number-1);
+ }
+
+  console.log(factorial(6)); // 720
+}());//end wrapper iife
+
+// Proper Tail Calls
+(function(){
+  'use strict';
+
+  const factorialPTC = number=> factorial(number, 1);
+  const factorial = (number, accumulator)=> {
+     if(number <= 0){
+        return accumulator;
+     }
+   return factorial(number-1, accumulator* number);
+  }
+
+ console.log(factorialPTC(5)); // 120
+
+}());//end wrapper iife

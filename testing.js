@@ -194,13 +194,15 @@ console.log(factorial(6)); // 720
 (function(){
   'use strict';
 
-  const factorialPTC = number=> factorIt(number, 1);
-  const factorIt = (number, accum)=> {
-    if(number<=1){
-      return accum;
+  const factorialPTC = number=> factorial(number, 1);
+  const factorial = (number, accum)=> {
+    if(number<=0){
+      return accum = 1;
     }
-    return factorIt(number-1, number * accum)
-  }
-  
+  return (number-1, number * accum);
+  }; 
+ 
+
   console.log(factorialPTC(6)); //
+
 }());//end wrapper iife
