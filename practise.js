@@ -271,15 +271,18 @@ console.log(greetHello("Helen"));
 
 // variadic functions
  // currying variadic function
+(function(){
+  'use strict';
 
-const greetDeepCurried = greeting=> seperator=> emphasis=> name=> {
-   return greeting + seperator+ name + emphasis;
+  const greetDeepCurried = greeting=> separator=> emphasis=> name=> {
+   return greeting + separator+ name + emphasis;
 }
 
-const greetHesitation = greetDeepCurried("Hello")("seperator")("...")("?");
+const greetHesitation = greetDeepCurried("Hello")("...")("?");
 console.log(greetHesitation("John")); // Hello...John?
 const sayHello = greetDeepCurried("Hello")(",");
 console.log(sayHello("!")("Antonis"));
 
+}());//end wrapper iife
 
 
