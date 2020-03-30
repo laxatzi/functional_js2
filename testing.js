@@ -189,3 +189,18 @@ console.log(factorial(6)); // 720
   console.log(factorial(6)); // 720
 
 }());//end wrapper iife
+
+// proper tail call
+(function(){
+  'use strict';
+
+  const factorialPTC = number=> factorIt(number, 1);
+  const factorIt = (number, accum)=> {
+    if(number<=1){
+      return accum;
+    }
+    return factorIt(number-1, number * accum)
+  }
+  
+  console.log(factorialPTC(6)); //
+}());//end wrapper iife
