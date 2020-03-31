@@ -288,14 +288,23 @@ console.log(sayHello("!")("Antonis"));
 // map, reduce, filter
 // Exercise:
 /* 
-    
-
+  Create a merged word from three letter pet words found in a pet array.
+  petArray = ["dog", "cat", "canary", "goldfish"];
 */
+{
+  "use strict";
+  
+   const pets = ["dog", "cat", "canary", "goldfish"];
+   const threeLetterPetWordsMerge = words=> {
+      // subfunctions
+     const threeLetterWords = word=> word.length === 3;
+     const capWords = word=> word.charAt(0).toUpperCase() + word.slice(1);
+     const mergeWords = (word1, word2)=> word1 + word2;
+   // functional methods combined
+     return pets.filter(threeLetterWords).map(capWords).reduce(mergeWords);
+   }// end of function
+   // test
+   console.log(threeLetterPetWordsMerge(pets)); // 
 
-const petArray = ["cat", "dog", "canary"];
-const threeLetterWords = word=> word.length === 3;
-const capitalize = word=> word.charAt(0).toUpperCase() + word.slice(1);
-const mergedWords = (word1,word2)=> word1+word2;
-const mergedTheeLetterPetWords = words=> words.filter(threeLetterWords).map(capitalize).reduce(mergedWords);
+}// end of code block
 
-console.log(mergedTheeLetterPetWords(petArray)); // 
