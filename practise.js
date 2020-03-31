@@ -321,3 +321,33 @@ console.log(sayHello("!")("Antonis"));
 
 }// end of block
 
+// refactor composition function
+{
+  'use strict';
+  
+  const timesTwo = num=> num * 2;
+  const addOne = num=> num + 1;
+
+  const timesTwoAddOne = num=>{
+     let holder = num;
+     holder = timesTwo(holder);
+     holder = addOne(holder);
+
+     return holder;
+  }
+
+  // test
+  console.log(timesTwoAddOne(4)); // 9
+
+  const addOneTimesTwo = num=> {
+     let holder = num;
+     holder = addOne(holder);
+     holder = timesTwo(holder);
+
+     return holder;
+  }
+
+  // test 
+  console.log(addOneTimesTwo(4)); // 10
+
+}// end of code block
