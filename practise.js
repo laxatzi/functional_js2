@@ -285,4 +285,17 @@ console.log(sayHello("!")("Antonis"));
 
 }());//end wrapper iife
 
+// map, reduce, filter
+// Exercise:
+/* 
+    
 
+*/
+
+const petArray = ["cat", "dog", "canary"];
+const threeLetterWords = word=> word.length === 3;
+const capitalize = word=> word.charAt(0).toUpperCase() + word.slice(1);
+const mergedWords = (word1,word2)=> word1+word2;
+const mergedTheeLetterPetWords = words=> words.filter(threeLetterWords).map(capitalize).reduce(mergedWords);
+
+console.log(mergedTheeLetterPetWords(petArray)); // 
