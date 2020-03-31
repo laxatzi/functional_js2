@@ -308,3 +308,16 @@ console.log(sayHello("!")("Antonis"));
 
 }// end of code block
 
+// composition example
+{
+   'use strict';
+  
+    const timesTwo = num=> num*2;
+    const addOne = num=> num+1;
+
+    console.log(addOne(timesTwo(3))); // 7
+    console.log(timesTwo(addOne(3))); // 8
+    console.log(addOne(timesTwo(addOne(3)))); // 9
+
+}// end of block
+
