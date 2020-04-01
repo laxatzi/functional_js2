@@ -368,5 +368,84 @@ console.log(sayHello("!")("Antonis"));
 
   console.log(addOneTimesTwo(4)); // 10
   console.log(timesTwoAddOne(4)); // 9
-}// end of block
+} // end of block
 
+// Exercise on Functional Programming principles
+/* 
+  So far, we have seen two distinct principles on functional programming.
+  1) Don't alter an object/variable - create new ones and return them (if necessary) from a function
+  2) Declare function arguments - any computation inside a function depends only on the arguments, and NOT any global object/variable.
+
+  Refactor code so that the global array 'bookList' is not changed inside either function. The 'add' function should add the given 'bookName' to the end of the array passed to it and return an array, and any new parameters should be added before the 'bookName' parameter.
+
+*/
+(function(){
+   'use strict';
+
+  // The global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+// Change code below this line
+function add (bookName) {
+
+  bookList.push(bookName);
+  return bookList;
+  
+  // Change code above this line
+}
+
+// Change code below this line
+function remove (bookName) {
+  var book_index = bookList.indexOf(bookName);
+  if (book_index >= 0) {
+
+    bookList.splice(book_index, 1);
+    return bookList;
+
+    // Change code above this line
+    }
+}
+
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+//console.log(bookList);
+
+
+}());//end wrapper iife
+
+// Refactor
+{
+   'use strict';
+
+   // The global variable
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+  const  add = (arr, bookName)=> {
+   const newArr = arr.map(x=> x);
+   newArr.push(bookName);
+   return newArr;
+ }// end of fn
+ 
+const  remove = (arr, bookName)=> {
+   const newArr = arr.map(x=> x);
+   const book_index = newArr.indexOf(bookName);
+   if (book_index >= 0) {
+ 
+     newArr.splice(book_index, 1);
+     return newArr;
+ 
+     }
+ }// and of fn
+
+ 
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+console.log(bookList);
+console.log(newBookList);
+console.log(newerBookList);
+console.log(newestBookList); 
+}
