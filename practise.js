@@ -308,7 +308,7 @@ console.log(sayHello("!")("Antonis"));
 
 }// end of code block
 
-// composition example
+// functions combination example
 {
    'use strict';
   
@@ -321,7 +321,7 @@ console.log(sayHello("!")("Antonis"));
 
 }// end of block
 
-// refactor composition function
+// refactor code
 {
   'use strict';
   
@@ -351,3 +351,5 @@ console.log(sayHello("!")("Antonis"));
   console.log(addOneTimesTwo(4)); // 10
 
 }// end of code block
+
+// function composition example
