@@ -364,8 +364,9 @@ console.log(sayHello("!")("Antonis"));
   }
 
   const addOneTimesTwo = compose(timesTwo, addOne); // 10
-  const timesTowAddOne = compose(addOne, timesTwo); // 9
+  const timesTwoAddOne = compose(addOne, timesTwo); // 9
 
   console.log(addOneTimesTwo(4)); // 10
   console.log(timesTwoAddOne(4)); // 9
 }// end of block
+
