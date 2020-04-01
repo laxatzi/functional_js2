@@ -353,3 +353,19 @@ console.log(sayHello("!")("Antonis"));
 }// end of code block
 
 // function composition example
+{
+  'use strict';
+   
+  const addOne = num=> num + 1;
+  const timesTwo = num=> num * 2;
+
+  const compose = (f1, f2)=>{
+     return value => f1(f2(value)); //every inner function is returning a value that’s going to be operated on by the outer functions.
+  }
+
+  const addOneTimesTwo = compose(timesTwo, addOne); // 10
+  const timesTowAddOne = compose(addOne, timesTwo); // 9
+
+  console.log(addOneTimesTwo(4)); // 10
+  console.log(timesTwoAddOne(4)); // 9
+}// end of block
